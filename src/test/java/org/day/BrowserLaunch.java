@@ -9,6 +9,11 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BrowserLaunch {
 
@@ -29,6 +34,12 @@ public class BrowserLaunch {
 		System.out.println(formatCellValue);
 	    }
 	}
+	WebDriver driver = WebDriverManager.chromedriver().create();
+	driver.get("https://www.facebook.com/");
+	WebElement txtUserName = driver.findElement(By.id("email"));
+	txtUserName.sendKeys("Welcome Java");
+	WebElement txtPassword = driver.findElement(By.id("pass"));
+	txtPassword.sendKeys("Hi Java");
 	String str = "java programm";
 	String output = "";
 
@@ -37,6 +48,6 @@ public class BrowserLaunch {
 	    output = output + c;
 	}
 	System.out.println("Reverse of given String :" + output);
-	
+
     }
 }
